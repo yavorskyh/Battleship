@@ -17,7 +17,27 @@ public class Battleship {
 	
 	// prompts user to place ships into game board
 	public static void placeShips(int playerNum){
-		
+	
+	Scanner read = new Scanner(System.in);
+	System.out.println("/n Player:" + playerNum + " place your ships");
+	
+	for (int i=1; i <= 5; i++) // 5 ships?
+	{
+		System.out.print("X coordinate for" + i + "ship");
+		int xCord = input.NextInt();
+
+		System.out.print("Y coordinate for" + i + "ship");
+		int yCord = input.NextInt();
+
+		if ((xCord >= 0 && xCord < numRows) && (yCord >= 0 && yCord < numColumns) && (gameboard[xCord][yCord] == " "))
+		{
+			gameboard[xCord][yCord] = "x";
+			System.out.print(i + "your ship was deployed");
+			i++;
+		}
+	}	
+		printGameBoard();
+
 	}
 	
 	// prompts user to select spot on game board to attack 
