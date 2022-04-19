@@ -31,9 +31,41 @@ public class Battleship {
 	// prompts user to select spot on game board to attack
 	// (make sure to include error checking user selects their own ship or user selects invalid x and y coordinate)
 	// (if user selects correctly, they get another shot at guessing)
-	public static void attack(int playerNum){
+	
+  public static void attack(int playerNum){
+	
+	int xC, yC; // coordinates
 
+	Scanner s = new Scanner(System.in);
+	System.out.print("Enter X coordinate");
+	xC = s.nextInt();
+	System.out.print("Enter Y coordinate");
+	yC = s.nextInt();
+
+	if (guessboard[xC][yC] == "x")
+	{
+		System.out.println("You sunk the ship!");
+		guessboard[xC][yC] = "!";
+		--BattleShip.placeShips;
 	}
 
+	else if (guessboard[xC][yC] == "@")
+	{
+		System.out.println("You sunk your own ship!"); 
+		guessboard[xC][yC] = "x";
+		--BattleShip.placeShips;
+	}
+	
+	else if (guessboard[xC][yC] == " " )
+	{
+		System.out.println("You missed");
+		guessboard[xC][yC] = "-";
+	}
 
+	// makes sure that the ship is on the board
+	else if ((x < 0 || x >= numRows) || (y < 0 || y >= numColumns)
+	{
+		System.out.println("Out of bounds. Try again:);
+	}
+	
 }
