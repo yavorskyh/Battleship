@@ -9,9 +9,22 @@ public class Battleship {
 		Player player2 = new Player(2);
 
 		player1.placeShips(1);
-		player1.printGameBoard();
-		
-	}
+		player1.printGameBoard(1);
+		player2.placeShips(2);
+		player2.printGameBoard(2);
+
+
+		//
+		// do{
+		// 	player1.printGameBoard();
+		// 	player1.attack();
+		//
+		// 	player2.printGameBoard();
+		// 	player2.attack();
+		//
+		// }while(player1Ships != 0 || player2Ships != 0 );
+
+	}//end of main
 
 
 

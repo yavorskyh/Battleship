@@ -10,24 +10,26 @@ public class Player {
 	public int[][] guessBoard;
 
 	// 0 = no guess, 1 = correct guess, 2 = incorrect guess, 3 = represent a sunken ship
-	static char[][] gameBoard;
+	//static char[][] gameBoard;
+	static char[][] gameBoard1;
+  static char[][] gameBoard2;
 
 	// constructors (int num = player number)
 	public Player(){
 		playerNum = 1;
 		guessBoard = new int[numRows][numColumns];
-		gameBoard = new char[numRows][numColumns];
-		createGameBoard();
+		gameBoard1 = new char[numRows][numColumns];
+		createGameBoard(gameBoard1);
 	}
 	public Player(int num){
 		playerNum = num;
 		guessBoard = new int[numRows][numColumns];
-		gameBoard = new char[numRows][numColumns];
-		createGameBoard();
+		gameBoard2 = new char[numRows][numColumns];
+		createGameBoard(gameBoard2);
 	}
 
 	// initializes empty game board
-	static void createGameBoard(){
+	static void createGameBoard(char [][] gameBoard){
 
 	//print top row of numbers
 	System.out.print(" ");
@@ -53,10 +55,18 @@ public class Player {
 	}
 
 	// prompts user to place ships into game board
-	public static void placeShips(int playerNum){
+	public static void placeShips(int player){
+
+	//creates gameboard and assigns it accordingly based on playerNum input
+	char [][] gameBoard;
+	if(player == 1)
+	 gameBoard = gameBoard1;
+	else
+	 gameBoard = gameBoard2;
 
 	Scanner input = new Scanner(System.in);
-	System.out.println("\nPlayer: " + playerNum + " place your ships");
+	System.out.println("\nPlayer: " + player + " place your ships");
+
 
 	for (int i=1; i <= 5; i++) // 5 ships?
 	{
@@ -73,11 +83,18 @@ public class Player {
 		}
 	}
 
-	}
+}//end of placeShips
 
 	// print out the current state of the game board (current player cannot see other player ship
 	// locations, only hits, misses, and locations of sunken ships of other player)
-	public static void printGameBoard(){
+	public static void printGameBoard(int playerNum){
+
+		//creates gameboard and assigns it accordingly based on playerNum input
+		char [][] gameBoard;
+		if(playerNum == 1)
+		 gameBoard = gameBoard1;
+		else
+			gameBoard = gameBoard2;
 
 		//print top row of numbers
 		System.out.print(" ");
@@ -99,6 +116,6 @@ public class Player {
 			System.out.println();
 			}
 
-	}
+	}//end of print
 
-}
+}//end of player
