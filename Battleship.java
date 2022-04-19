@@ -27,13 +27,4 @@ public class Battleship {
 	}//end of main
 
 
-
-	// prompts user to select spot on game board to attack
-	// (make sure to include error checking user selects their own ship or user selects invalid x and y coordinate)
-	// (if user selects correctly, they get another shot at guessing)
-	public static void attack(int playerNum){
-
-	}
-
-
 }
