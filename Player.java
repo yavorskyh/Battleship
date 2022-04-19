@@ -29,14 +29,14 @@ public class Player {
 
 	// initializes empty game board
 	private void createGameBoard(){
-	
+
 		//print top row of numbers
 		System.out.print(" ");
 		for(int i = 0; i < numColumns; i++)
 			System.out.print(i);
-		
+
 		System.out.println();
-	
+
 		for(int i = 0; i < gameBoard.length; i++)
 		{
 			for(int j = 0; j < gameBoard[i].length; j++)
@@ -49,25 +49,25 @@ public class Player {
 			}
 			System.out.println();
 		}
-	
+
 	}//end of createGameBoard()
 
 	// prompts user to place ships into game board
-	public void placeShips(int player){
-	
+	public void placeShips(){
+
 		//creates gameboard and assigns it accordingly based on playerNum input
 		Scanner input = new Scanner(System.in);
-		System.out.println("\nPlayer: " + player + " place your ships");
-	
-	
+		System.out.println("\nPlayer place your ships");
+
+
 		for (int i=1; i <= 5; i++) // 5 ships?
 		{
 			System.out.print("X coordinate for ship " + i + ": ");
 			int xCord = input.nextInt();
-	
+
 			System.out.print("Y coordinate for ship: " + i + ": ");
 			int yCord = input.nextInt();
-	
+
 			if ((xCord >= 0 && xCord < numRows) && (yCord >= 0 && yCord < numColumns) && (gameBoard[xCord][yCord] == '~'))
 			{
 				gameBoard[xCord][yCord] = 'x';
@@ -76,7 +76,7 @@ public class Player {
 		}
 
 	}//end of placeShips()
-	
+
 
 
 	// prompts user to select spot on game board to attack
@@ -89,7 +89,7 @@ public class Player {
 
 	// print out the current state of the game board (current player cannot see other player ship
 	// locations, only hits, misses, and locations of sunken ships of other player)
-	public void printGameBoard(int playerNum){
+	public void printGameBoard(){
 
 
 		//print top row of numbers
