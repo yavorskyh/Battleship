@@ -152,9 +152,6 @@ public class SwitchToAttackListener implements ActionListener
         	  
         	  cells[i][j].addActionListener(new AttackListener(i,j));
         	  
-        	  if (player1.gameBoard[i][j] == 'x')
-        		  cells[i][j].setBackground(Color.GRAY);
-        	  
         	  panel.add(cells[i][j]);
           }
         }
@@ -292,12 +289,6 @@ public class SwitchToPlayerListener implements ActionListener
         		  
         		  if (player1.guessBoard[i][j]  == '-')
         			  cells[i][j].setBackground(Color.RED);
-        		  
-        		  if (player1.gameBoard[i][j] == 'x')
-            		  cells[i][j].setBackground(Color.GRAY);
-        		  
-        		  if (player1.gameBoard[i][j] == '@')
-        			  cells[i][j].setBackground(Color.ORANGE);
         	  }
         	  else
         	  {
@@ -306,12 +297,6 @@ public class SwitchToPlayerListener implements ActionListener
         		  
         		  if (player2.guessBoard[i][j]  == '-')
         			  cells[i][j].setBackground(Color.RED);
-        		  
-        		  if (player2.gameBoard[i][j] == 'x')
-            		  cells[i][j].setBackground(Color.GRAY);
-        		  
-        		  if (player2.gameBoard[i][j] == '@')
-        			  cells[i][j].setBackground(Color.ORANGE);
         	  }
         	  
         	  panel.add(cells[i][j]);
