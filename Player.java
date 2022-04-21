@@ -9,35 +9,49 @@ public class Player {
 
 	// 0 = open ocean, 1 = ship
 	public char[][] guessBoard;
+	//Board guessBoard;
 
 	// 0 = no guess, 1 = correct guess, 2 = incorrect guess, 3 = represent a sunken ship
-	//static char[][] gameBoard;
 	public char[][] gameBoard;
+	//	Board gameBoard;
 
 	// constructors (int num = player number)
 	public Player(){
 		playerNum = 1;
 		guessBoard = new char[numRows][numColumns];
 		gameBoard = new char[numRows][numColumns];
+
+		//calls gui
+		// guessBoard = new Board();
+		// gameBoard = new Board();
 		createGameBoard();
 	}
 	public Player(int num){
 		playerNum = num;
 		guessBoard = new char[numRows][numColumns];
 		gameBoard = new char[numRows][numColumns];
+
+		//calls gui of board
+		// guessBoard = new Board();
+		// gameBoard = new Board();
 		createGameBoard();
 	}
 
 	// initializes empty game board
 	private void createGameBoard(){
 
+		//creates grid (just opens it and thats it)
+	//	gameBoard.createGrid();
+
+	//	guessBoard.createGrid();
+
 		for(int i = 0; i < gameBoard.length; i++)
 		{
 			for(int j = 0; j < gameBoard[i].length; j++)
 				gameBoard[i][j] = '~';
 		}
-		
-	
+
+
 		for (int i = 0; i < guessBoard.length; i++)
 		{
 			for (int j = 0; j < guessBoard[i].length; j++)
@@ -49,7 +63,17 @@ public class Player {
 	// prompts user to place ships into game board
 	public void placeShips(){
 
-		//creates gameboard and assigns it accordingly based on playerNum input
+		//is supposde to assign/deploy a ship when button is pressed
+	// 		Pressed pressedB;
+	//
+	// 		int shipsDeployed = 0;
+	// 		do {
+	// 			pressedB = gameBoard.new Pressed();
+	// 			shipsDeployed++;
+	// 		} while (shipsDeployed != 5);
+
+
+
 		Scanner input = new Scanner(System.in);
 		System.out.println("Player " + playerNum + " please place your ships");
 		int shipsDeployed = 0;
@@ -70,8 +94,9 @@ public class Player {
 			}
 			else
 				System.out.println("Coordinates out of bounds. Try again.");
-			
+
 		}while (shipsDeployed !=  5);
+
 
 	}//end of placeShips()
 
@@ -80,9 +105,9 @@ public class Player {
 	// prompts user to select spot on game board to attack
 		// (make sure to include error checking user selects their own ship or user selects invalid x and y coordinate)
 		// (if user selects correctly, they get another shot at guessing)
-		
+
 	  public void attack(Player enemy){
-		
+
 		int xC, yC; // coordinates
 
 		Scanner s = new Scanner(System.in);
@@ -98,14 +123,14 @@ public class Player {
 			System.out.println("Out of bounds. Try again.");
 			this.attack(enemy);
 		}
-		
+
 		// Enemy ship is already sunk
 		else if (enemy.gameBoard[xC][yC] == '@')
 		{
 			System.out.println("Ship already sunk. Try again.");
 			this.attack(enemy);
 		}
-		
+
 		// Player gave correct guess
 		else if (enemy.gameBoard[xC][yC] == 'x')
 		{
@@ -113,11 +138,11 @@ public class Player {
 			guessBoard[xC][yC] = '!';
 			enemy.gameBoard[xC][yC]  =  '@';
 			enemy.numShips--;
-			
+
 			if (enemy.numShips != 0)
 				this.attack(enemy);
 		}
-		
+
 		// Player gave incorrect guess
 		else if (enemy.gameBoard[xC][yC] == '~')
 		{
@@ -125,18 +150,18 @@ public class Player {
 			guessBoard[xC][yC] = '-';
 			printGuessBoard();
 		}
-	
+
 	}//end of attack()
 
 
 
 	// print out the current state of the game board
 	public void printGameBoard(){
-		
+
 		System.out.println("\n-----Player "  + playerNum + "-----");
 		System.out.println("----Game Board----");
 		System.out.println();
-		
+
 		//print top row of numbers
 		System.out.print("  ");
 		for(int i = 0; i < numColumns; i++)
@@ -144,7 +169,7 @@ public class Player {
 			System.out.print(i);
 		}
 		System.out.println();
-		
+
 		for(int i = 0; i < gameBoard.length; i++)
 		{
 			for(int j = 0; j < gameBoard[i].length; j++)
@@ -157,14 +182,14 @@ public class Player {
 			System.out.println();
 		}
 		System.out.println();
-		
+
 	}//end of print()
-	
+
 	public void printGuessBoard() {
 		System.out.println("\n-----Player "  + playerNum + "-----");
 		System.out.println("----Guess Board----");
 		System.out.println();
-		
+
 		//print top row of numbers
 		System.out.print("  ");
 		for(int i = 0; i < numColumns; i++)
@@ -172,7 +197,7 @@ public class Player {
 			System.out.print(i);
 		}
 		System.out.println();
-		
+
 		for(int i = 0; i < guessBoard.length; i++)
 		{
 			for(int j = 0; j < guessBoard[i].length; j++)
